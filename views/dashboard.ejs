@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Gaming Website</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/games">Games</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="#" id="logout-btn">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="dashboard">
+            <h1>Welcome to Your Dashboard, <%= user %>!</h1>
+            <p>Manage your games and account settings here.</p>
+            <div class="game-list">
+                <!-- Replace with your own game images and links -->
+                <div class="game-item">
+                    <img src="https://th.bing.com/th/id/OIP.0Qvk8BmfIkSGpVR6UUKmbAHaEK?rs=1&pid=ImgDetMain" alt="Game 1">
+                    <h2> UNCHARTED</h2>
+                    <p>Uncharted 4: A Thief's End is a 2016 action-adventure game developed by Naughty Dog and published by Sony Computer Entertainment. It is the fourth main entry in the Uncharted series. Set several years after the events of Uncharted 3: Drake's Deception, players control Nathan Drake, a former treasure hunter coaxed out of retirement by his presumed-dead brother Samuel. With Nathan's longtime partner, Victor Sullivan, they search for clues to the location of Henry Avery's long-lost treasure. A Thief's End is played from a third-person perspective, and incorporates platformer elements. Players solve puzzles and use firearms, melee combat, and stealth to combat enemies. In the online multiplayer mode, up to ten players engage in co-operative and competitive modes.</p>
+                </div>
+                <div class="game-item">
+                    <img src="https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7" alt="Game 2">
+                    <h2>GOD OF WAR</h2>
+                    <p>God of War is an action-adventure game franchise created by David Jaffe and developed by Sony's Santa Monica Studio. It began in 2005 on the PlayStation 2 (PS2) video game console and has become a flagship series for PlayStation, consisting of nine installments across multiple platforms. Based on ancient mythologies, the series' plot follows Kratos, a Spartan warrior who becomes the God of War and comes into conflict with various mythological pantheons. The earlier games in the series are based on Greek mythology and see Kratos follow a path of vengeance against the Olympian gods; the later games are based on Norse mythology and see Kratos go on a path of redemption while also introducing his son Atreus as a secondary protagonist.</p>
+                </div>
+                <!-- Add more game items as needed -->
+            </div>
+        </section>
+    </main>
+    <script>
+        document.getElementById("logout-btn").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            fetch('/logout', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/'; // Redirect to homepage after logout
+                    } else {
+                        console.error('Logout failed');
+                    }
+                })
+                .catch(error => console.error('Error logging out:', error));
+        });
+    </script>
+</body>
+</html>
